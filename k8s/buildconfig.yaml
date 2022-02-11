@@ -30,7 +30,7 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'java:openjdk-11-el7'
+        name: 'java:latest'
   postCommit: {}
   source:
     type: Git
