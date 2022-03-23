@@ -7,7 +7,7 @@ metadata:
     app.openshift.io/vcs-uri: 'https://github.com/ceanders/undertow-servlet-s2i'
     deployment.kubernetes.io/revision: '2'
     image.openshift.io/triggers: >-
-      [{"from":{"kind":"ImageStreamTag","name":"undertow-servlet-s-2-i:latest","namespace":"demo5-delete"},"fieldPath":"spec.template.spec.containers[?(@.name==\"undertow-servlet-s-2-i\")].image","pause":"false"}]
+      [{"from":{"kind":"ImageStreamTag","name":"undertow-servlet-s-2-i:latest","namespace":"undertow-servlet-s2i"},"fieldPath":"spec.template.spec.containers[?(@.name==\"undertow-servlet-s-2-i\")].image","pause":"false"}]
     openshift.io/generated-by: OpenShiftWebConsole
   name: undertow-servlet-s-2-i
   labels:
@@ -33,7 +33,7 @@ spec:
       containers:
         - name: undertow-servlet-s-2-i
           image: >-
-            image-registry.openshift-image-registry.svc:5000/demo5-delete/undertow-servlet-s-2-i:latest
+            image-registry.openshift-image-registry.svc:5000/undertow-servlet-s2i/undertow-servlet-s-2-i:latest
           ports:
             - containerPort: 8080
               protocol: TCP
