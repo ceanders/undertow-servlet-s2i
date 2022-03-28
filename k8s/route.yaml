@@ -4,6 +4,8 @@ metadata:
   name: undertow-servlet-s-2-i
   annotations:
     openshift.io/host.generated: 'true'
+  labels:
+    type: external
 spec:
   to:
     kind: Service
