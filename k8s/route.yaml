@@ -6,7 +6,6 @@ metadata:
     openshift.io/host.generated: 'true'
   labels:
     type: external
-    exclusive: 'true'
 spec:
   to:
     kind: Service
