@@ -2,8 +2,6 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: undertow-servlet-s-2-i
-  annotations:
-    openshift.io/host.generated: 'true'
   labels:
     type: external
     exclusive: 'true'
