@@ -6,6 +6,7 @@ metadata:
     type: external
     exclusive: 'true'
 spec:
+  host: undertow.apps.cedricanderson.name
   to:
     kind: Service
     name: undertow-servlet-s-2-i
