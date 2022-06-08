@@ -4,7 +4,7 @@ metadata:
   name: undertow-servlet-s-2-i
   labels:
     type: external
-    exclusive: 'true'
+    exclusive: 'false'
 spec:
   host: undertow.apps.cedricanderson.name
   to:
