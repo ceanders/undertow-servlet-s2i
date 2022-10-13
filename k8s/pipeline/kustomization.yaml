@@ -6,3 +6,4 @@ resources:
   - undertow-app-trigger.yaml
   - undertow-app-triggerbinding.yaml
   - undertow-app-triggertemplate.yaml
+  - undertow-app-eventlistener.yaml
