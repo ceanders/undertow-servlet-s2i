@@ -7,3 +7,4 @@ resources:
   - undertow-app-triggerbinding.yaml
   - undertow-app-triggertemplate.yaml
   - undertow-app-eventlistener.yaml
+  - pipeline-scratchpad-pvc.yaml

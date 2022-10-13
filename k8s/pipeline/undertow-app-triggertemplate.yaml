@@ -22,10 +22,5 @@ spec:
         serviceAccountName: pipeline
         workspaces:
           - name: scratchpad
-            volumeClaimTemplate:
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 500Mi
+            persistentvolumeClaim:
+              claimname: pipeline-scratchpad
