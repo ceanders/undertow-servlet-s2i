@@ -36,11 +36,11 @@ spec:
               protocol: TCP
           resources:
             requests:
-              memory: "6Gi"
+              memory: "8Gi"
               cpu: "0.1"
             limits:
               cpu: "0.5"
-              memory: "6Gi"
+              memory: "8Gi"
           readinessProbe:
             httpGet:
               path: /
