@@ -4,3 +4,4 @@ resources:
   - route.yaml
   - service.yaml
   - horizontalpodautoscaler.yaml
+  - pdb.yaml
