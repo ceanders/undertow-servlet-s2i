@@ -37,6 +37,8 @@ spec:
           resources:
             requests:
               memory: "1Gi"
+            limits:
+              cpu: "0.1"
           readinessProbe:
             httpGet:
               path: /
