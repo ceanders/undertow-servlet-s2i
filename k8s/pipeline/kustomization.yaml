@@ -1,0 +1,8 @@
+# This file exists so that kubectl apply -k works.
+resources:
+  - undertow-app-build-and-deploy-pipeline.yaml
+  - github-secret.yaml
+  - el-undertow-trigger-route.yaml
+  - undertow-app-trigger.yaml
+  - undertow-app-triggerbinding.yaml
+  - undertow-app-triggertemplate.yaml

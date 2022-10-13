@@ -19,7 +19,6 @@ spec:
       app: undertow-servlet-s-2-i
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: undertow-servlet-s-2-i
         deploymentconfig: undertow-servlet-s-2-i
