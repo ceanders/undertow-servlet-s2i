@@ -11,7 +11,7 @@ metadata:
 spec:
   to:
     kind: Service
-    name: el-undertow-app
+    name: el-undertow-app-eventlistener
     weight: 100
   port:
     targetPort: http-listener
