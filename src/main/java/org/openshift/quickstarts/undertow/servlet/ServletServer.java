@@ -54,7 +54,7 @@ public class ServletServer {
                     .setDeploymentName("test.war")
                     .addServlets(
                             servlet("MessageServlet", MessageServlet.class)
-                                    .addInitParam("message", "Welcome to my first app build on OpenShift! Using a pipeline and a commit!")
+                                    .addInitParam("message", "Welcome to my first app build on OpenShift! Using a pipeline and a commit Part 2!")
                                     .addMapping("/*"),
                             servlet("MyServlet", MessageServlet.class)
                                     .addInitParam("message", "MyServlet")
