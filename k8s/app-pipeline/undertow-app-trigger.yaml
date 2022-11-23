@@ -1,0 +1,23 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: Trigger
+metadata:
+  name: undertow-app-trigger
+spec:
+  bindings:
+  - kind: TriggerBinding
+    ref: undertow-app-triggerbinding
+  interceptors:
+  - params:
+    - name: secretRef
+      value:
+        secretKey: secretToken
+        secretName: github-secret
+    - name: eventTypes
+      value:
+      - push
+    ref:
+      kind: ClusterInterceptor
+      name: github
+  serviceAccountName: pipeline
+  template:
+    ref: undertow-app-triggertemplate

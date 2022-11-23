@@ -3,12 +3,15 @@ apiVersion: apps/v1
 metadata:
   annotations:
     alpha.image.policy.openshift.io/resolve-names: '*'
+<<<<<<< HEAD:k8s/deploy-app-buildconfig/deployment.yaml
+=======
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/ceanders/undertow-servlet-s2i'
     deployment.kubernetes.io/revision: '2'
     image.openshift.io/triggers: >-
       [{"from":{"kind":"ImageStreamTag","name":"undertow-servlet-s-2-i:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"undertow-servlet-s-2-i\")].image","pause":"false"}]
     openshift.io/generated-by: OpenShiftWebConsole
+>>>>>>> 907cd9561a46e5f9114f9b416b9254a2b30b6e35:k8s/deployment.yaml
   name: undertow-servlet-s-2-i
   labels:
     app: undertow-servlet-s-2-i
@@ -19,13 +22,12 @@ metadata:
     app.openshift.io/runtime: java
     app.openshift.io/runtime-version: openjdk-11-el7
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: undertow-servlet-s-2-i
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: undertow-servlet-s-2-i
         deploymentconfig: undertow-servlet-s-2-i
@@ -33,20 +35,43 @@ spec:
       containers:
         - name: undertow-servlet-s-2-i
           image: >-
+<<<<<<< HEAD:k8s/deploy-app-buildconfig/deployment.yaml
+            undertow:latest
+=======
             undertow-servlet-s-2-i:latest
+>>>>>>> 907cd9561a46e5f9114f9b416b9254a2b30b6e35:k8s/deployment.yaml
           ports:
             - containerPort: 8080
               protocol: TCP
-            - containerPort: 8443
-              protocol: TCP
-            - containerPort: 8778
-              protocol: TCP
           resources:
             requests:
-              memory: "1Gi"
+              memory: "7Gi"
+              cpu: "0.1"
+            limits:
+              cpu: "0.5"
+              memory: "7Gi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: postgresql
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

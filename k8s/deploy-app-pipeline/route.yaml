@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: undertow-servlet-s-2-i
+  labels:
+    type: external
+    exclusive: 'false'
+spec:
+  to:
+    kind: Service
+    name: undertow-servlet-s-2-i
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

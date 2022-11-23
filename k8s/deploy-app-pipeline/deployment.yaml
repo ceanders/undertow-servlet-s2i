@@ -1,0 +1,73 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+  name: undertow-servlet-s-2-i
+  labels:
+    app: undertow-servlet-s-2-i
+    app.kubernetes.io/component: undertow-servlet-s-2-i
+    app.kubernetes.io/instance: undertow-servlet-s-2-i
+    app.kubernetes.io/name: undertow-servlet-s-2-i
+    app.kubernetes.io/part-of: undertow-servlet-s-2-i-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-11-el7
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: undertow-servlet-s-2-i
+  template:
+    metadata:
+      labels:
+        app: undertow-servlet-s-2-i
+        deploymentconfig: undertow-servlet-s-2-i
+    spec:
+      containers:
+        - name: undertow-servlet-s-2-i
+          image: >-
+            undertow:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "7Gi"
+              cpu: "0.1"
+            limits:
+              cpu: "0.5"
+              memory: "7Gi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: postgresql
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
