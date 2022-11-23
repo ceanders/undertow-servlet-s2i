@@ -1,7 +1,0 @@
-# This file exists so that kubectl apply -k works.
-resources:
-  - deployment.yaml
-  - route.yaml
-  - service.yaml
-  - horizontalpodautoscaler.yaml
-  - pdb.yaml

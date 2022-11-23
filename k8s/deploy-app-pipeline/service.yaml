@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: undertow-servlet-s-2-i
+  labels:
+    app: undertow-servlet-s-2-i
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: undertow-servlet-s-2-i
+  type: ClusterIP
+  sessionAffinity: None
