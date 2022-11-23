@@ -3,6 +3,15 @@ apiVersion: apps/v1
 metadata:
   annotations:
     alpha.image.policy.openshift.io/resolve-names: '*'
+<<<<<<< HEAD:k8s/deploy-app-buildconfig/deployment.yaml
+=======
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/ceanders/undertow-servlet-s2i'
+    deployment.kubernetes.io/revision: '2'
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"undertow-servlet-s-2-i:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"undertow-servlet-s-2-i\")].image","pause":"false"}]
+    openshift.io/generated-by: OpenShiftWebConsole
+>>>>>>> 907cd9561a46e5f9114f9b416b9254a2b30b6e35:k8s/deployment.yaml
   name: undertow-servlet-s-2-i
   labels:
     app: undertow-servlet-s-2-i
@@ -26,7 +35,11 @@ spec:
       containers:
         - name: undertow-servlet-s-2-i
           image: >-
+<<<<<<< HEAD:k8s/deploy-app-buildconfig/deployment.yaml
             undertow:latest
+=======
+            undertow-servlet-s-2-i:latest
+>>>>>>> 907cd9561a46e5f9114f9b416b9254a2b30b6e35:k8s/deployment.yaml
           ports:
             - containerPort: 8080
               protocol: TCP
