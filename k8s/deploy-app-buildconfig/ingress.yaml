@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-example
+spec:
+  rules:
+  - host: ingress-example.apps.ocp.lab.cedricanderson.name
+    http:
+      paths:
+      - backend:
+          service:
+            name: undertow-servlet-s-2-i
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
